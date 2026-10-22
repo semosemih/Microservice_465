@@ -23,7 +23,7 @@ namespace CORE.Services
         {
             Culture = "en-US";
         }
-
+   
         protected CommandResponse Success(int id, string message = default) => new CommandResponse(true, message ?? "Operation successful.", id);
 
         protected CommandResponse Error(string message = default)=> new CommandResponse(false, message ?? "Operation failed!");
