@@ -40,6 +40,14 @@ namespace CORE.Services
             if(save)
                 await DbSaveAsync(cancellationToken);
         }
-
+        
+        protected async Task DbUpdateAsync(TEntity entity, 
+        CancellationToken cancellationToken,
+        bool save = true)
+        {
+            _db.Set<TEntity>().Update(entity);
+            if(save)
+                await DbSaveAsync(cancellationToken);
+        }
     }
 }
