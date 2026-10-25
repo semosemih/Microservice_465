@@ -49,5 +49,13 @@ namespace CORE.Services
             if(save)
                 await DbSaveAsync(cancellationToken);
         }
+
+        protected async Task DbRemoveAsync(TEntity entity,
+        CancellationToken cancellationToken,
+        bool save = true){
+            _db.Set<TEntity>().Remove(entity);
+            if(save)
+                await DbSaveAsync(cancellationToken);
+        }
     }
 }
