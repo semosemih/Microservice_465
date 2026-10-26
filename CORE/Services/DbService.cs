@@ -57,5 +57,15 @@ namespace CORE.Services
             if(save)
                 await DbSaveAsync(cancellationToken);
         }
+
+        protected void DbRemove<TNavigationEntity>(List<TNavigationEntity> navigationEntities) 
+        where TNavigationEntity : Record, new(){
+            _db.Set<TNavigationEntity>().RemoveRange(navigationEntities);
+        }
+
+        public void Dispose(){
+            _db.Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 }
