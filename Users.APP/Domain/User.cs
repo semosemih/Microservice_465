@@ -11,5 +11,40 @@ namespace Users.APP.Domain{
         [Required, StringLength(15)]
         public string Password{get; set;}
         
+        [StringLength(50)]
+        public string FirstName {get; set;}
+
+        [StringLength(50)]
+        public string LastName {get; set;}
+
+        public Genders Gender {get; set;}
+
+        public DateTime? BirthDate {get; set;}
+
+        public DateTime RegistrationDate { get; set;}
+
+        public double Score {get; set;}
+
+        public bool IsOnline {get; set;}
+
+        public int StatusId {get; set;}
+
+        public Status Status { get; set;}
+
+        public List<UserRole> UserRoles {get; set;} = new();
+
+        [NotMapped]
+        public List<int> RoleIds{
+
+            get => UserRoles.Select(userRoleEntity => userRoleEntity.RoleId).ToList();
+
+            set => UserRoles = value.Select(roleIdValue => new UserRole{
+                RoleId = roleIdValue
+            }).ToList();
+        }
+
+        public string RefreshToken { get; set;}
+
+        public DateTime? RefreshTokenExpiration {get; set;}
     }
 }
