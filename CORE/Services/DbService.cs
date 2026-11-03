@@ -16,7 +16,7 @@ namespace CORE.Services
 
 
         protected virtual IQueryable<TEntity> DbQuery()
-        => _db.Set<Entity>().AsNoTracking();
+        => _db.Set<TEntity>().AsNoTracking();
 
         protected async Task<TEntity> DbSingleAsync(int id, CancellationToken cancellationToken = default)
         {

@@ -7,9 +7,9 @@ namespace CORE.Models
 
         public string Message {get;}
 
-        public CommandResponse(bool IsSuccessful, string message, int id = 0) : base(id)
+        public CommandResponse(bool isSuccessful, string message, int id = 0) : base(id)
         {
-            IsSuccessful = IsSuccessful;
+            IsSuccessful = isSuccessful;
             Message = message;
         }
     }
